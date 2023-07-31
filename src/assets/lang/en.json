@@ -1,0 +1,90 @@
+{
+  "header": {
+    "home": "Home",
+    "login": "Login",
+    "boards": "My Boards",
+    "sign-up": "Sign-up",
+    "change-profile": "Change profile",
+    "logout": "Logout",
+    "new-password": "Your new password",
+    "repeat-password": "Repeat Your new password",
+    "save-changes": "Save changes"
+  },
+
+  "footer": {
+    "name": "Sokolova Nadezhda"
+  },
+
+  "welcome-page": {
+    "title": "Welcome to Project Management Application",
+    "text": "Bring your teammates to optimize the work process, improve efficiency and bring your results to the new level!",
+    "login": "Login",
+    "developer": "Developer of this app",
+    "information": "Student of the course UpSkillMe"
+  },
+
+  "login-page": {
+    "title": "Please sign in",
+    "login": "Login",
+    "password": "Password",
+    "sign-in": "Sign-in",
+    "registration": "Don't have an account yet?",
+    "error": "Invalid username or password"
+  },
+
+  "sign-up-page": {
+    "title": "Sign up",
+    "name": "Your Name",
+    "login": "Your Login",
+    "password": "Password",
+    "repeat": "Repeat your password",
+    "register": "Register"
+  },
+
+  "sign-up-valid": {
+    "required": "Field is required.",
+    "minLength": "Field must be at least 2 characters long.",
+    "minLengthPassword": "Password must be at list 8 characters long.",
+    "only-letters": "Only letters are allowed.",
+    "allowed-symbols": "Only letters and numbers are allowed.",
+    "password-symbols": "The password must contain lowercase and uppercase Latin letters, numbers.",
+    "password-confirm": "Passwords does not match."
+  },
+
+  "modal": {
+    "yes": "Yes",
+    "no": "No"
+  },
+
+  "main-route": {
+    "create-board": "Create new board",
+    "name-board": "Enter name for a new board",
+    "view-edit": "View/Edit",
+    "remove": "Remove"
+  },
+
+  "one-board": {
+    "description": "To go to the board page, click on this board."
+  },
+
+  "board-route": {
+    "create": "Create",
+    "create-column": "Create new column",
+    "name-column": "Enter name for a new column",
+    "order-column": "Enter order",
+    "create-task": "Create new task",
+    "name-task": "Enter name for a new task",
+    "description-task": "Enter description for a new task",
+    "edit-task": "Edit this task",
+    "edit-name-task": "Enter a new name",
+    "edit-desc-task": "Enter a new description",
+    "submit": "Submit"
+  },
+
+  "one-column": {
+    "new-title": "Enter a new name",
+    "save": "Save",
+    "cancel": "Cancel"
+  }
+
+}

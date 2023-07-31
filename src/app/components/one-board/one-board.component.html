@@ -1,0 +1,27 @@
+<div class="row g-0 border rounded overflow-hidden flex-md-row mb-2 shadow-sm h-md-250 position-relative one-board"
+  [attr.id]="thisBoardId"
+  routerLink="/board-route"
+  (click)="getIdThisBoard($event)">
+  <div class="col p-4 d-flex flex-column position-static">
+    <h3 class="mb-0">{{title}}</h3>
+    <p class="card-text mb-auto">{{"one-board.description" | translate}}</p>
+    <div class="btn-group mt-1" style="width: 88px;">
+      <button
+        type="button"
+        class="btn btn-sm btn-outline-secondary"
+        (click)="openModal(); getIdThisBoard($event);"
+      >
+        {{"main-route.remove" | translate}}
+    </button>
+    </div>
+  </div>
+
+  <div class="alert alert-danger" role="alert" *ngIf="errMessage">
+    Error {{statusCode}}: {{errMessage}}
+  </div>
+</div>
+
+<app-modal
+  [isVisible]="isModalVisible"
+  (close)="isModalVisible = false"
+></app-modal>

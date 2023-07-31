@@ -1,0 +1,129 @@
+<section>
+  <div class="container">
+    <div class="row d-flex justify-content-center align-items-center mb-4">
+      <div class="col-lg-12 col-xl-11">
+        <div class="card text-black" style="border-radius: 25px;">
+          <div class="card-body p-0">
+            <div class="row justify-content-center">
+              <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+
+                <p class="text-center h2 mb-4 mx-1 mx-md-4 mt-3">{{"sign-up-page.title" | translate}}</p>
+
+                <form class="mx-1 mx-md-4" [formGroup]="myForm" >
+
+                  <div class="d-flex flex-row align-items-center mb-2">
+                    <div class="form-outline flex-fill mb-0">
+                      <label class="form-label" for="form3Example1c">{{"sign-up-page.name" | translate}}</label>
+                      <input
+                        type="text"
+                        id="form3Example1c"
+                        name="name"
+                        class="form-control"
+                        formControlName="userName"
+                        >
+                      <div *ngIf="myForm.controls['userName'].invalid && (myForm.controls['userName'].dirty || myForm.controls['userName'].touched)" class="alert alert-danger">
+                        <div *ngIf="myForm.controls['userName'].errors?.['required']">
+                          {{"sign-up-valid.required" | translate}}
+                        </div>
+                        <div *ngIf="myForm.controls['userName'].errors?.['minlength']">
+                          {{"sign-up-valid.minLength" | translate}}
+                        </div>
+                        <div *ngIf="myForm.controls['userName'].errors?.['pattern']">
+                          {{"sign-up-valid.only-letters" | translate}}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="d-flex flex-row align-items-center mb-2">
+                    <div class="form-outline flex-fill mb-0">
+                      <label class="form-label" for="form3Example3c">{{"sign-up-page.login" | translate}}</label>
+                      <input
+                        type="text"
+                        id="form3Example3c"
+                        name="login"
+                        class="form-control"
+                        formControlName="userLogin"
+                        >
+                      <div *ngIf="myForm.controls['userLogin'].invalid && (myForm.controls['userLogin'].dirty || myForm.controls['userLogin'].touched)" class="alert alert-danger">
+                        <div *ngIf="myForm.controls['userLogin'].errors?.['required']">
+                          {{"sign-up-valid.required" | translate}}
+                        </div>
+                        <div *ngIf="myForm.controls['userLogin'].errors?.['minlength']">
+                          {{"sign-up-valid.minLength" | translate}}
+                        </div>
+                        <div *ngIf="myForm.controls['userLogin'].errors?.['pattern']">
+                          {{"sign-up-valid.allowed-symbols" | translate}}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div name="password" [formGroup]="password">
+                    <div class="d-flex flex-row align-items-center mb-2">
+                      <div class="form-outline flex-fill mb-0">
+                        <label class="form-label" for="form3Example4c">{{"sign-up-page.password" | translate}}</label>
+                        <input
+                          type="password"
+                          id="form3Example4c"
+                          name="pass"
+                          class="form-control"
+                          formControlName="pass"
+                          >
+                        <div *ngIf="pass.invalid && (pass.dirty || pass.touched)" class="alert alert-danger">
+                          <div *ngIf="pass.errors?.['required']">
+                            {{"sign-up-valid.required" | translate}}
+                          </div>
+                          <div *ngIf="pass.errors?.['minlength']">
+                            {{"sign-up-valid.minLengthPassword" | translate}}
+                          </div>
+                          <div *ngIf="pass.errors?.['pattern']">
+                            {{"sign-up-valid.password-symbols" | translate}}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="d-flex flex-row align-items-center mb-2">
+                      <div class="form-outline flex-fill mb-0">
+                        <label class="form-label" for="form3Example4cd">{{"sign-up-page.repeat" | translate}}</label>
+                        <input type="password" id="form3Example4cd" name="conf_pass" class="form-control" [ngClass]="confirmPasswordClass" formControlName="conf_pass">
+                        <div *ngIf="conf_pass.invalid && (conf_pass.dirty || conf_pass.touched)" class="alert alert-danger">
+                          <div *ngIf="conf_pass.errors?.['required']">
+                            {{"sign-up-valid.required" | translate}}
+                          </div>
+                          <div *ngIf="conf_pass.errors?.['minlength']">
+                            {{"sign-up-valid.minLengthPassword" | translate}}
+                          </div>
+                          <div *ngIf="conf_pass.errors?.['confirmedValidator']">
+                            {{"sign-up-valid.password-confirm" | translate}}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="d-flex justify-content-center mx-4 mb-3 lg-4">
+                    <button type="button" class="btn btn-primary btn-lg" (click)="addUser()">{{"sign-up-page.register" | translate}}</button>
+                  </div>
+
+                </form>
+
+              </div>
+              <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
+
+                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp"
+                  class="img-fluid" alt="Sample image">
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="alert alert-danger" role="alert" *ngIf="errMessage">
+    Error {{statusCode}}: {{errMessage}}
+  </div>
+</section>

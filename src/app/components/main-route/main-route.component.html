@@ -1,0 +1,39 @@
+<div class="create-new-board m-4">
+  <form [formGroup]="boardNameForm">
+    <div class="form-floating mb-2">
+      <input
+        type="text"
+        class="form-control"
+        id="floatingInput"
+        name="boardName"
+        formControlName="boardName"
+        placeholder="EnterBoardName">
+      <label for="floatingInput">{{"main-route.name-board" | translate}}</label>
+    </div>
+
+    <button
+      type="button"
+      class="btn btn-primary btn-lg"
+      tabindex="0"
+      (click)="createOneBoardComponent()">
+      {{"main-route.create-board" | translate}}
+    </button>
+  </form>
+</div>
+
+<div
+  class="p-4 pt-0 pb-0 mb-4"
+  id="boards_container">
+  <ng-container #boardsContainer>
+    <app-one-board
+      *ngFor="let item of items"
+      [data]="item"
+      [attr.id]="item._id"
+    >
+    </app-one-board>
+  </ng-container>
+</div>
+
+<div class="alert alert-danger" role="alert" *ngIf="errMessage">
+  Error {{statusCode}}: {{errMessage}}
+</div>

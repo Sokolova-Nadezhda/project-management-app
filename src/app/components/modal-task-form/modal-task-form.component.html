@@ -1,0 +1,68 @@
+<div
+  class="modal modal-sheet position-absolute d-block p-4 py-md-5"
+  tabindex="-1"
+  role="dialog"
+  id="modal"
+  style="background-color: rgba(0, 0, 0, 0.2); height: 100%;"
+  *ngIf="isNewParamsOfTaskFormVisible"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content rounded-4 shadow">
+      <div class="modal-header p-5 pb-4 border-bottom-0">
+        <h1 class="fw-bold mb-0 fs-2">{{"board-route.edit-task" | translate}}</h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+          (click)="makeVisibleOrInvisibleTaskForm($event)"
+          style="margin-left: 0;"></button>
+      </div>
+
+      <div class="modal-body p-5 pt-0 d-flex flex-wrap align-items-center justify-content-center">
+        <form
+          class="col p-4 pt-0 pb-0 d-flex flex-wrap align-items-center justify-content-center"
+          style="gap: 10px; width: 240px; margin: 0;"
+          [formGroup]="newParamsForm">
+          <div class="form-floating w-100">
+            <input
+              type="text"
+              class="form-control"
+              id="floatingInput1"
+              name="newTaskName"
+              formControlName="newTaskName"
+              placeholder="EnterTaskName"
+            >
+            <label for="floatingInput">{{"board-route.edit-name-task" | translate}}</label>
+            <div *ngIf="newParamsForm.controls['newTaskName'].invalid && (newParamsForm.controls['newTaskName'].dirty || newParamsForm.controls['newTaskName'].touched)" class="alert alert-danger">
+              <div *ngIf="newParamsForm.controls['newTaskName'].errors?.['required']">
+                {{"sign-up-valid.required" | translate}}
+              </div>
+            </div>
+          </div>
+          <div class="form-floating w-100">
+            <input
+              type="text"
+              class="form-control"
+              id="floatingInput1"
+              name="newTaskDescription"
+              formControlName="newTaskDescription"
+              placeholder="EnterTaskDescription"
+            >
+            <label for="floatingInput">{{"board-route.edit-desc-task" | translate}}</label>
+            <div *ngIf="newParamsForm.controls['newTaskDescription'].invalid && (newParamsForm.controls['newTaskDescription'].dirty || newParamsForm.controls['newTaskDescription'].touched)" class="alert alert-danger">
+              <div *ngIf="newParamsForm.controls['newTaskDescription'].errors?.['required']">
+                {{"sign-up-valid.required" | translate}}
+              </div>
+            </div>
+          </div>
+          <button
+            type="button"
+            class="btn btn-lg btn-primary p-3 pt-2 pb-2"
+            (click)="makeVisibleOrInvisibleTaskForm($event); updateThisTask()"
+          >{{"board-route.submit" | translate}}</button>
+      </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,187 @@
+<div class="col" style="min-width: 272px; max-width: 423px; overflow: hidden;"
+  (click)="getIdThisColumn($event);">
+  <div class="card rounded-3 shadow-sm" style="height: 350px;">
+    <div
+      class="card-header"
+
+      (click)="getIdThisColumn($event);makeVisibleOrInvisibleTitle($event)"
+    >
+      <h4
+        class="my-0 fw-normal"
+        style="margin-right: 18px;"
+        *ngIf="!isNewColumnNameFormVisible"
+      >
+        {{title}}
+      </h4>
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="modal"
+        aria-label="Close"
+        style="position: absolute; top: 10px; right: 8px;"
+        (click)="openModal($event); getIdThisColumn($event);"
+        *ngIf="!isNewColumnNameFormVisible"
+      ></button>
+
+      <form *ngIf="isNewColumnNameFormVisible" [formGroup]="newColumnNameForm">
+        <div class="form-floating d-flex" style="flex-direction: column;">
+          <input
+            type="text"
+            class="form-control mb-2"
+            id="floatingInput"
+            name="newColumnName"
+            formControlName="newColumnName"
+            placeholder="EnterNewColumnName"
+          >
+          <label for="floatingInput">{{"one-column.new-title" | translate}}</label>
+          <div *ngIf="newColumnNameForm.controls['newColumnName'].invalid && (newColumnNameForm.controls['newColumnName'].dirty || newColumnNameForm.controls['newColumnName'].touched)" class="alert alert-danger">
+            <div *ngIf="newColumnNameForm.controls['newColumnName'].errors?.['required']">
+              {{"sign-up-valid.required" | translate}}
+            </div>
+          </div>
+          <div class="btn-group">
+            <button
+              type="button"
+              class="btn btn-sm btn-outline-secondary"
+              (click)="updateThisColumn(); makeVisibleOrInvisibleTitle($event)">{{"one-column.save" | translate}}</button>
+            <button
+              type="button"
+              class="btn btn-sm btn-outline-secondary"
+              (click)="makeVisibleOrInvisibleTitle($event)"
+            >{{"one-column.cancel" | translate}}</button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div class="card-body p-0" style=" display: flex; flex-direction: column; justify-content: space-between;">
+      <div
+        class="list-group list-group-flush border-bottom scrollarea task-container"
+        style="height: 226px; overflow-y:auto; "
+
+        cdkDropList
+        [cdkDropListData]="tasks"
+        (cdkDropListDropped)="drop($event);"
+        cdkDropListOrientation="vertical"
+      >
+
+        <ng-container #tasksContainer>
+          <app-one-task
+          *ngFor="let item of tasks"
+          [data]="item"
+          [attr.id]="item._id"
+
+          cdkDrag
+          (click)="makeVisibleOrInvisibleTaskForm($event);"
+        >
+          </app-one-task>
+        </ng-container>
+
+      </div>
+      <button
+        type="button"
+        class=" m-3 mt-0 btn btn-lg btn-outline-primary"
+        (click)="isFormForNewTaskVisible = true; getIdThisColumn($event)"
+      >{{"board-route.create-task" | translate}}</button>
+    </div>
+  </div>
+</div>
+
+<div
+  class="modal modal-sheet position-absolute d-block p-4 py-md-5"
+  tabindex="-1"
+  role="dialog"
+  id="modal"
+  style="background-color: rgba(0, 0, 0, 0.2); height: 100%;"
+  *ngIf="isFormForNewTaskVisible"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content rounded-4 shadow">
+      <div class="modal-header p-5 pb-4 border-bottom-0">
+        <h1 class="fw-bold mb-0 fs-2">{{"board-route.create-task" | translate}}</h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+          (click)="isFormForNewTaskVisible = false;"
+          style="margin-left: 0;"></button>
+      </div>
+
+      <div class="modal-body p-5 pt-0 d-flex flex-wrap align-items-center justify-content-center">
+        <form
+          class="col p-4 pt-0 pb-0 d-flex flex-wrap align-items-center justify-content-center"
+          style="gap: 10px; width: 240px; margin: 0;"
+          [formGroup]="createTaskForm">
+          <div class="form-floating w-100">
+            <input
+              type="text"
+              class="form-control"
+              id="floatingInput1"
+              name="taskName"
+              formControlName="taskName"
+              placeholder="EnterTaskName"
+            >
+            <label for="floatingInput">{{"board-route.name-task" | translate}}</label>
+            <div *ngIf="createTaskForm.controls['taskName'].invalid && (createTaskForm.controls['taskName'].dirty || createTaskForm.controls['taskName'].touched)" class="alert alert-danger">
+              <div *ngIf="createTaskForm.controls['taskName'].errors?.['required']">
+                {{"sign-up-valid.required" | translate}}
+              </div>
+            </div>
+          </div>
+          <div class="form-floating w-100">
+            <input
+              type="text"
+              class="form-control"
+              id="floatingInput1"
+              name="taskDescription"
+              formControlName="taskDescription"
+              placeholder="EnterTaskDescription"
+            >
+            <label for="floatingInput">{{"board-route.description-task" | translate}}</label>
+            <div *ngIf="createTaskForm.controls['taskDescription'].invalid && (createTaskForm.controls['taskDescription'].dirty || createTaskForm.controls['taskDescription'].touched)" class="alert alert-danger">
+              <div *ngIf="createTaskForm.controls['taskDescription'].errors?.['required']">
+                {{"sign-up-valid.required" | translate}}
+              </div>
+            </div>
+          </div>
+          <div class="form-floating w-100">
+            <input
+              type="number"
+              class="form-control"
+              id="floatingInput2"
+              name="taskOrder"
+              formControlName="taskOrder"
+              placeholder="EnterTaskOrder"
+              [ngModel]="taskOrder" (ngModelChange)="taskOrder = $event">
+            <label for="floatingInput">{{"board-route.order-column" | translate}}</label>
+            <div *ngIf="createTaskForm.controls['taskOrder'].invalid && (createTaskForm.controls['taskOrder'].dirty || createTaskForm.controls['taskOrder'].touched)" class="alert alert-danger">
+              <div *ngIf="createTaskForm.controls['taskOrder'].errors?.['required']">
+                {{"sign-up-valid.required" | translate}}
+              </div>
+            </div>
+          </div>
+          <button
+            type="button"
+            class="btn btn-lg btn-primary p-3 pt-2 pb-2"
+            (click)="isFormForNewTaskVisible = false; createOneTaskComponent()"
+          >{{"board-route.create" | translate}}</button>
+      </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-modal
+  [isVisible]="isModalVisible"
+  (close)="isModalVisible = false"
+></app-modal>
+
+<app-modal-task-form
+  [isNewParamsOfTaskFormVisible]="isNewParamsOfTaskFormVisible"
+  (close)="isNewParamsOfTaskFormVisible = false"
+></app-modal-task-form>
+
+<div class="alert alert-danger" role="alert" *ngIf="errMessage">
+  Error {{statusCode}}: {{errMessage}}
+</div>

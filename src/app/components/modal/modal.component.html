@@ -1,0 +1,32 @@
+<div
+  class="modal modal-sheet d-block"
+  tabindex="-1"
+  role="dialog"
+  id="modalChoice"
+  *ngIf="isVisible"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content rounded-3 shadow">
+      <div class="modal-body p-4 text-center">
+        <h5 class="mb-0">{{"main-route.remove" | translate}}?</h5>
+      </div>
+      <div class="modal-footer flex-nowrap p-0">
+        <button
+          type="button"
+          class="btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0 border-end"
+          (click)="removeElement($event)"
+        >
+          <strong>{{"modal.yes" | translate}}</strong>
+        </button>
+        <button
+          type="button"
+          class="btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0"
+          data-bs-dismiss="modal"
+          (click)="closeModal()"
+        >
+        {{"modal.no" | translate}}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,28 @@
+<div
+  class="list-group-item list-group-item-action py-2 px-2 lh-sm"
+  style="min-height: 75px; overflow-wrap:break-word;"
+  (click)=" getIdThisTask($event);"
+>
+  <div class="d-flex w-100 align-items-center justify-content-between">
+    <strong class="mb-1 one-task-title">{{title}}</strong>
+    <small>
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="modal"
+        aria-label="Close"
+        (click)="openModal($event); getIdThisTask($event);"
+      ></button>
+    </small>
+  </div>
+  <div class="col-10 mb-1 small one-task-desc">{{description}}</div>
+</div>
+
+<app-modal
+  [isVisible]="isModalVisible"
+  (close)="isModalVisible = false"
+></app-modal>
+
+<div class="alert alert-danger" role="alert" *ngIf="errMessage">
+  Error {{statusCode}}: {{errMessage}}
+</div>

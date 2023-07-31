@@ -1,0 +1,9 @@
+app-header, footer {
+  padding: 0 20px;
+}
+
+footer {
+  position: relative;
+  width: 100%;
+  bottom: 0;
+}
