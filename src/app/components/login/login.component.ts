@@ -38,11 +38,11 @@ export class LoginComponent {
           const tokenPayloadJSON = JSON.parse(atob(tokenPayloadBase64));
           const userId = tokenPayloadJSON.id as string;
 
-          const tokenExpiration = Number(tokenPayloadBase64.exp) * 1000;
+          const tokenExpiration = tokenPayloadJSON.exp * 1000;
 
           storage.setItem('userId', userId);
           storage.setItem('token', data.token);
-          storage.setItem('tokenExpiration', tokenExpiration.toString())
+          storage.setItem('tokenExpiration', `${tokenExpiration}`)
           window.location = '/main-route' as (string | Location) & Location
         },
         (error) => {
