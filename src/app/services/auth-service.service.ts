@@ -56,4 +56,4 @@ export class User{
     public name?:any,){}
 }
 
-export const serviceLink = "http://ec2-13-53-175-192.eu-north-1.compute.amazonaws.com"
+export const serviceLink = "http://unruly-sack-production.up.railway.app"
