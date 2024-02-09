@@ -25,28 +25,28 @@ export class BoardsServiceService {
       'Authorization': `Bearer ${this.token}`,
     });
 
-    return this.http.post(serviceLink + ':3000/boards', body, { headers });
+    return this.http.post(serviceLink + '/boards', body, { headers });
   }
 
   removeBoard(idBoard: string) {
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${this.token}`,
     });
-    return this.http.delete(serviceLink + ':3000/boards/' + idBoard, { headers });
+    return this.http.delete(serviceLink + '/boards/' + idBoard, { headers });
   }
 
   getBoards() {
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${this.token}`,
     });
-    return this.http.get(serviceLink + ':3000/boardsSet/' + this.userId, { headers });
+    return this.http.get(serviceLink + '/boardsSet/' + this.userId, { headers });
   }
 
   getBoardById(idBoard: string) {
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${this.token}`,
     });
-    return this.http.get(serviceLink + ':3000/boards/' + idBoard, { headers });
+    return this.http.get(serviceLink + '/boards/' + idBoard, { headers });
   }
 }
 
