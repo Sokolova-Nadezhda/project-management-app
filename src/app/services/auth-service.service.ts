@@ -16,7 +16,7 @@ export class AuthServiceService {
       login: user.login,
       password: user.password
     };
-    return this.http.post(serviceLink + ':3000/auth/signin', body);
+    return this.http.post(serviceLink + '/auth/signin', body);
   }
 
   signupUser(user: User) {
@@ -26,14 +26,14 @@ export class AuthServiceService {
       password: user.password
     };
 
-    return this.http.post(serviceLink + ':3000/auth/signup', body);
+    return this.http.post(serviceLink + '/auth/signup', body);
   }
 
   getUserById() {
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${this.token}`,
     });
-    return this.http.get(serviceLink + ':3000/users/' + this.userId, { headers });
+    return this.http.get(serviceLink + '/users/' + this.userId, { headers });
   }
 
   updateUser(user: User) {
@@ -45,7 +45,7 @@ export class AuthServiceService {
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${this.token}`,
     });
-    return this.http.put(serviceLink + ':3000/users/' + this.userId, body, { headers })
+    return this.http.put(serviceLink + '/users/' + this.userId, body, { headers })
   }
 }
 
