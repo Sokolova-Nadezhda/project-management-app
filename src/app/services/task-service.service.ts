@@ -26,14 +26,14 @@ export class TaskServiceService {
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${this.token}`,
     });
-    return this.http.post(serviceLink + ':3000/boards/' + boardId + '/columns/' + columnId + '/tasks', body, { headers });
+    return this.http.post(serviceLink + '/boards/' + boardId + '/columns/' + columnId + '/tasks', body, { headers });
   }
 
   removeTask(boardId: string, idColumn: string, taskId: string) {
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${this.token}`,
     });
-    return this.http.delete(serviceLink + ':3000/boards/' + boardId + '/columns/' + idColumn + '/tasks/' + taskId, { headers });
+    return this.http.delete(serviceLink + '/boards/' + boardId + '/columns/' + idColumn + '/tasks/' + taskId, { headers });
   }
 
   updateTask(idColumn: string, boardId: string, taskId: string, newParams: NewParamsOfOneTask) {
@@ -41,14 +41,14 @@ export class TaskServiceService {
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${this.token}`,
     });
-    return this.http.put(serviceLink + ':3000/boards/' + boardId + '/columns/' + idColumn + '/tasks/' + taskId, body, { headers });
+    return this.http.put(serviceLink + '/boards/' + boardId + '/columns/' + idColumn + '/tasks/' + taskId, body, { headers });
   }
 
   getTasksInThisColumn(boardId: string, columnId: string) {
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${this.token}`,
     });
-    return this.http.get(serviceLink + ':3000/boards/' + boardId + '/columns/' + columnId + '/tasks', { headers })
+    return this.http.get(serviceLink + '/boards/' + boardId + '/columns/' + columnId + '/tasks', { headers })
   }
 
   updateSetOfTasks(arrayOfNewParams: NewParamsOfTasks[]) {
@@ -56,7 +56,7 @@ export class TaskServiceService {
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${this.token}`,
     });
-    return this.http.patch(serviceLink + ':3000/tasksSet', body, { headers });
+    return this.http.patch(serviceLink + '/tasksSet', body, { headers });
   }
 }
 
