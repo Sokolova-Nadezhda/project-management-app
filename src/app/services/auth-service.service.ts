@@ -56,4 +56,4 @@ export class User{
     public name?:any,){}
 }
 
-export const serviceLink = "http://unruly-sack-production.up.railway.app"
+export const serviceLink = "https://unruly-sack-production.up.railway.app"
